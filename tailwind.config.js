@@ -4,19 +4,15 @@ module.exports = {
   theme: {
       extend: {
           fontFamily: {
-              poppins: ['Poppins', 'sans-serif'],
               raleway: ['Raleway', 'sans-serif'],
+              poppins: ['Poppins', 'sans-serif'],
           },
           colors: {
-              mainColor: '#420039',
-              secondColor: '#932F6D',
-              lightMain: '#932F6D',
+              mainColor: '#fb7206',
+              secondColor: '#9f7aea',
+              lightMain: '#fad5b9',
               rbgSecond: 'rgb(236, 27, 48, 0.5)',
               rbgMain: 'rgba(20, 88, 135, 0.5)',
-              customDark: 'rgba(6, 15, 21, 0.7)',
-              customDarkRed: 'rgba(94, 22, 29, 0.5)',
-              custumBlue: '#9883E5',
-              highlight: '#52FFEE',
           },
       },
   },
