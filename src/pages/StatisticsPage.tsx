@@ -1,5 +1,5 @@
-import { useAppSelector } from "../redux/hooks";
-import { statisticsSelector } from "../redux/store";
+import { useAppSelector } from "../features/hooks";
+import { statisticsSelector } from "../features/store";
 
 const StatisticsPage = () => {
   const { statistics, isLoading } = useAppSelector(statisticsSelector);

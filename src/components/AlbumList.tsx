@@ -3,84 +3,82 @@ import img from '../assets/image/music.png';
 import img2 from '../assets/image/guitar.png';
 import img3 from '../assets/image/cd.png';
 import img4 from '../assets/image/lp.png';
-import { albumSelector } from '../redux/store';
-import { useAppSelector } from '../redux/hooks';
-import LoadingScreen from './LoadingScreen';
+
 
 export const AlbumList = () => {
-    const { albums, isLoading } = useAppSelector(albumSelector);
+    // const { albums, isLoading } = useAppSelector(albumSelector);
 
-    const [searchInput, setSearchInput] = useState('');
+    // const [searchInput, setSearchInput] = useState('');
 
-    const handleSearchInput = (event: any) => {
-        setSearchInput(event.target.value);
-    };
-    let content;
-    if (isLoading) {
-        return <LoadingScreen />;
-    } else if (!isLoading && albums.length > 0) {
-        let filteredAlbum = albums.filter((album) => album.album.toLowerCase().includes(searchInput.toLowerCase()));
+    // const handleSearchInput = (event: any) => {
+    //     setSearchInput(event.target.value);
+    // };
+    // let content;
+    // if (isLoading) {
+    //     return <LoadingScreen />;
+    // } else if (!isLoading && albums.length > 0) {
+    //     let filteredAlbum = albums.filter((album) => album.album.toLowerCase().includes(searchInput.toLowerCase()));
 
-        content = (
-            <div className="flex flex-wrap gap-6 md:gap-0 -mx-2 mb-10 mx-10 lg:mx-24">
-                {filteredAlbum.length === 0 ? (
-                    <h1 className="text-2xl font-semibold text-center w-full">No Album Found</h1>
-                ) : (
-                    filteredAlbum.map(
-                        (item, index) =>
-                            item && (
-                                <div className="w-full md:w-1/2 md:mt-4 lg:w-1/3 h-auto px-4" key={index}>
-                                    <div
-                                        className="
-          p-4
-          pt-9
-          h-full
-          md:px-7
-          xl:px-10
-          bg-white
-          shadow-md
-          border
-          border-custumBlue
-          hover:shadow-lg
-          hover:bg-customDark
-          hover:text-white
-          transition duration-300 ease-in-out
-          flex
-          flex-col
-          justify-center
-          relative
-          group
-          overflow-hidden
-          rounded
-        "
-                                    >
-                                        <h4 className="relative z-10 font-semibold font-raleway text-2xl text-dark mb-3">{item.album}</h4>
-                                        <p className=" relative z-10 text-body-color text-sm font-poppins">Songs: {item.songCount}</p>
-                                        <img
-                                            className=" absolute z-0 top-0 left-0 invisible object-center object-cover group-hover:visible h-full w-full bg-black transition duration-200 ease-in-out group-hover:brightness-50 group-hover:opacity-80 group-hover:scale-110"
-                                            src={index % 2 === 0 ? img : img2}
-                                            alt="img"
-                                        />
-                                        <div className="absolute right-0 bottom-10 w-16 h-16 flex justify-center rounded-full top-0">
-                                            <img
-                                                src={index % 2 === 0 ? img4 : img3}
-                                                alt=""
-                                                onClick={() => {
-                                                    console.log(item);
-                                                }}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                    )
-                )}
-            </div>
-        );
-    }
+    //     content = (
+    //         <div className="flex flex-wrap gap-6 md:gap-0 -mx-2 mb-10 mx-10 lg:mx-24">
+    //             {filteredAlbum.length === 0 ? (
+    //                 <h1 className="text-2xl font-semibold text-center w-full">No Album Found</h1>
+    //             ) : (
+    //                 filteredAlbum.map(
+    //                     (item, index) =>
+    //                         item && (
+    //                             <div className="w-full md:w-1/2 md:mt-4 lg:w-1/3 h-auto px-4" key={index}>
+    //                                 <div
+    //                                     className="
+    //       p-4
+    //       pt-9
+    //       h-full
+    //       md:px-7
+    //       xl:px-10
+    //       bg-white
+    //       shadow-md
+    //       border
+    //       border-custumBlue
+    //       hover:shadow-lg
+    //       hover:bg-customDark
+    //       hover:text-white
+    //       transition duration-300 ease-in-out
+    //       flex
+    //       flex-col
+    //       justify-center
+    //       relative
+    //       group
+    //       overflow-hidden
+    //       rounded
+    //     "
+    //                                 >
+    //                                     <h4 className="relative z-10 font-semibold font-raleway text-2xl text-dark mb-3">{item.album}</h4>
+    //                                     <p className=" relative z-10 text-body-color text-sm font-poppins">Songs: {item.songCount}</p>
+    //                                     <img
+    //                                         className=" absolute z-0 top-0 left-0 invisible object-center object-cover group-hover:visible h-full w-full bg-black transition duration-200 ease-in-out group-hover:brightness-50 group-hover:opacity-80 group-hover:scale-110"
+    //                                         src={index % 2 === 0 ? img : img2}
+    //                                         alt="img"
+    //                                     />
+    //                                     <div className="absolute right-0 bottom-10 w-16 h-16 flex justify-center rounded-full top-0">
+    //                                         <img
+    //                                             src={index % 2 === 0 ? img4 : img3}
+    //                                             alt=""
+    //                                             onClick={() => {
+    //                                                 console.log(item);
+    //                                             }}
+    //                                         />
+    //                                     </div>
+    //                                 </div>
+    //                             </div>
+    //                         )
+    //                 )
+    //             )}
+    //         </div>
+    //     );
+    
     return (
         <div className=" relative w-5/6 items-center object-center mx-auto px-4 pt-10 pb-15 mb-10 mx-10 lg:mx-24">
-            <div className=" pb-12">
+            {/* <div className=" pb-12">
                 <h3 className="mx-12 lg:mx-28 mt-10">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias voluptates praesentium possimus ex quisquam placeat totam officiis atque facere deserunt sint, debitis, tempore
                     assumenda dignissimos error! Earum veniam error asperiores.
@@ -109,7 +107,7 @@ export const AlbumList = () => {
                     </div>
                 </div>
                 <>{content}</>
-            </div>
+            </div> */}
         </div>
     );
 };

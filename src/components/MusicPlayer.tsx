@@ -1,9 +1,8 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import vivaldi from "../assets/audio/Vivaldi.mp3";
-import piano from "../assets/audio/Piano.m4a";
 import motzart from "../assets/audio/Mozart.m4a";
 
-const albums = [
+const songs = [
   {
     id: 1,
     title: "Seasons: spring",
@@ -36,25 +35,27 @@ const AlbumGrid = () => {
   };
 
   return (
+    <div className="w-5/6 mx-auto mb-10 justify-center">
+
     <section className="grid grid-cols-1 sm:grid-cols-2 gap-16">
-      {albums.map((album) => (
+      {songs.map((song) => (
         <div
-          key={album.id}
+          key={song.id}
           className="border border-secondColor shadow-lg rounded p-3 max-h-56 flex flex-row"
         >
           <div className="group relative w-48 max-h-56">
             <img
               className="w-full md:w-72 block rounded max-h-48"
-              src={album.image}
+              src={song.image}
               alt=""
             />
             <div className="absolute bg-black rounded bg-opacity-0 group-hover:bg-opacity-60 w-full h-full top-0 flex items-center group-hover:opacity-100 transition justify-evenly">
               <button
                 className="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition"
                 onClick={() =>
-                  isPlaying && currentSong === album.audio
+                  isPlaying && currentSong === song.audio
                     ? handlePause()
-                    : handlePlay(album.audio)
+                    : handlePlay(song.audio)
                 }
               >
                   <svg
@@ -71,9 +72,9 @@ const AlbumGrid = () => {
             </div>
           </div>
           <div className="p-5 flex flex-col items-start">
-            <h3 className="text-gray-400 text-lg ml-3">{album.title}</h3>
-            <p className="text-gray-400 ml-3">{album.artist}</p>
-            {currentSong === album.audio && (
+            <h3 className="text-gray-400 text-lg ml-3">{song.title}</h3>
+            <p className="text-gray-400 ml-3">{song.artist}</p>
+            {currentSong === song.audio && (
               <audio
                 ref={audioRef}
                 controls
@@ -88,6 +89,7 @@ const AlbumGrid = () => {
         </div>
       ))}
     </section>
+    </div>
   );
 };
 

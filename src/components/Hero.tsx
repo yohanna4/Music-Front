@@ -1,32 +1,29 @@
-import React from "react";
 import background from "../assets/image/background.jpg";
 import note from "../assets/image/note.png";
 import stat from "../assets/image/stat.png";
 import music from "../assets/image/music.png";
-import { Wave } from "./Wave";
-import MusicPlayer from "./MusicPlayer";
 
-type Icon = {
+type Service = {
   label: string;
-  source: string;
   body: string;
+  source: string;
 };
 
-const icons: Icon[] = [
+const services: Service[] = [
   {
     label: "Music Collection",
-    source: note,
     body: "There is a thoughtfully assembled selection of music, offering a listening journey to a variety of chosen tracks.",
+    source: note,
   },
   {
     label: "Statistics",
-    source: stat,
     body: "There is a comprehensive look at music data. Users can delve into specifics such as an the number of songs and albums an artist has.",
+    source: stat,
   },
   {
     label: "Background Music",
-    source: music,
     body: "We also provide relaxing music right below. You can Listen by clicking play.",
+    source: music,
   },
 ];
 
@@ -53,7 +50,6 @@ export const Hero = () => {
                     <p className="mt-4 text-lg mb-4 font-bold  text-grey-400">
                       Create a music collection here: Start by saving songs.
                     </p>
-                    <Wave />
                   </div>
                 </div>
               </div>
@@ -81,7 +77,7 @@ export const Hero = () => {
           <section className="pb-10 bg-blueGray-200 -mt-24">
             <div className="container mx-auto px-4">
               <div className="flex flex-wrap">
-                {icons.map((icon, index) => (
+                {services.map((service, index) => (
                   <div
                     key={index}
                     className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center"
@@ -91,11 +87,11 @@ export const Hero = () => {
                         <div
                           className={`text-white p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-5 shadow-lg rounded-full  `}
                         >
-                          <img src={icon.source} alt={icon.label} />
+                          <img src={service.source} alt={service.label} />
                         </div>
-                        <h6 className="text-xl font-semibold">{icon.label}</h6>
+                        <h6 className="text-xl font-semibold">{service.label}</h6>
                         <p className="mt-2 mb-4 text-blueGray-500">
-                          {icon.body}
+                          {service.body}
                         </p>
                       </div>
                     </div>
@@ -105,9 +101,6 @@ export const Hero = () => {
             </div>
           </section>
         </section>
-          <div className="w-5/6 mx-auto mb-10 justify-center">
-      <MusicPlayer/>
-          </div>
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import background from "../assets/image/background.jpg";
-import { songSelector } from "../redux/store";
-import { useAppSelector } from "../redux/hooks";
+import { songSelector } from "../features/store";
+import { useAppSelector } from "../features/hooks";
 import LoadingScreen from "./LoadingScreen";
 
 interface Song {
@@ -14,9 +14,8 @@ interface Song {
 }
 
 export const SongList = () => {
-  const { songs, isLoading } = useAppSelector(songSelector);
-
   const [searchInput, setSearchInput] = useState("");
+  const { songs, isLoading } = useAppSelector(songSelector);
 
   const handleSearchInput = (event: any) => {
     setSearchInput(event.target.value);

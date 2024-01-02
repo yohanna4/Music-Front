@@ -3,22 +3,20 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useAppDispatch } from '../redux/hooks';
-import { postSongPending } from '../redux/songs/songSlice';
+import { useAppDispatch } from '../features/hooks';
+import { postSongPending } from '../features/songs/songSlice';
 
-// validation schema
 const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
-    artist: Yup.string().required('artist is required'),
-    album: Yup.string().required('album is required'),
-    genre: Yup.string().required('genre is required'),
+    artist: Yup.string().required('Artist is required'),
+    album: Yup.string().required('Album is required'),
+    genre: Yup.string().required('Gsenre is required'),
 });
 
 export default function AddSongForm() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    // on submit handler
     const onSubmit = async (values: any, { setSubmitting, setErrors }: any): Promise<void> => {
         try {
             dispatch(postSongPending(values));
@@ -35,8 +33,8 @@ export default function AddSongForm() {
     return (
         <section className=" py-1 bg-blueGray-50">
             <div className="w-full lg:w-8/12 px-4 mx-auto mt-6">
-                <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
-                    <div className="rounded-t bg-white mb-0 px-6 py-6">
+                <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-xl bg-gray-100 border-0">
+                    <div className="rounded-t bg-white mb-0 px-6 py-6  mt-30">
                         <div className="text-center flex justify-between">
                             <h6 className="text-blueGray-700 text-xl font-bold">New Song</h6>
                             <Link

@@ -2,9 +2,8 @@
 // import { Songs } from '../components/Songs';
 
 import { useState } from "react";
-import SongsPage from "./SongsPage";
-import { ArtistsPage } from "./ArtistsPage";
-import { AlbumsPage } from "./AlbumsPage";
+import { SongList } from "../components/SongList";
+import { ArtistList } from "../components/ArtistList";
 
 const ListItem = ({
   item,
@@ -32,7 +31,10 @@ const ListItem = ({
 
 const MusicPage = () => {
   const [selectedItem, setSelectedItem] = useState("Songs");
-  const items = ["Songs", "Artists", "Albums"];
+  const items = ["Songs", 
+  // "Artists",
+  //  "Albums",
+  ];
   return (
     <div>
       <div className="flex flex-row w-11/12 lg:w-5/6 mx-auto mt-10 items-start px-10 lg:px-24">
@@ -50,11 +52,13 @@ const MusicPage = () => {
       </div>
 
       {selectedItem === "Songs" ? (
-        <SongsPage />
+        <SongList />
       ) : selectedItem === "Artists" ? (
-        <ArtistsPage />
+        <ArtistList />
       ) : (
-        <AlbumsPage />
+        <h1></h1>
+
+        // <AlbumsPage />
       )}
     </div>
   );

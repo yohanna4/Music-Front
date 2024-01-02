@@ -11,8 +11,6 @@ module.exports = {
               mainColor: '#fb7206',
               secondColor: '#9f7aea',
               lightMain: '#fad5b9',
-              rbgSecond: 'rgb(236, 27, 48, 0.5)',
-              rbgMain: 'rgba(20, 88, 135, 0.5)',
           },
       },
   },

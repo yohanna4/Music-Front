@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { songSelector } from "../redux/store";
+import { useAppDispatch, useAppSelector } from "../features/hooks";
+import { songSelector } from "../features/store";
 import {
   deleteSongPending,
   getSongPending,
   updateSongPending,
-} from "../redux/songs/songSlice";
-import "react-responsive-modal/styles.css";
-import { Modal } from "react-responsive-modal";
+} from "../features/songs/songSlice";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
-  artist: Yup.string().required("artist is required"),
-  album: Yup.string().required("album is required"),
-  genre: Yup.string().required("genre is required"),
+  artist: Yup.string().required("Artist is required"),
+  album: Yup.string().required("Album is required"),
+  genre: Yup.string().required("Genre is required"),
 });
 
 export default function Details() {
@@ -26,15 +24,6 @@ export default function Details() {
   const { songs, isLoading } = useAppSelector(songSelector);
   const dispatch = useAppDispatch();
 
-  const [open, setOpen] = useState(null);
-
-  const handleOpenModal = (id: any) => {
-    setOpen(id);
-  };
-
-  const handleCloseModal = () => {
-    setOpen(null);
-  };
   // fetch song
   useEffect(() => {
     if (songs.length === 0) {
@@ -42,13 +31,13 @@ export default function Details() {
     }
   }, [dispatch, songs.length]);
   // delete a song
+
   const handleDelete = async (id: any) => {
     try {
       console.log(id);
       dispatch(deleteSongPending(id));
-      setOpen(null);
       toast.success("you have successfully deleted a Song");
-      navigate("/songs");
+      navigate("/music");
     } catch (error: any) {
       toast.error(error.message);
     }
@@ -197,7 +186,7 @@ export default function Details() {
             </button>
               <button
                 onClick={() => {
-                  handleOpenModal(id);
+                  handleDelete(id);
                 }}
                 className="px-10 py-1 rounded text-white bg-red-600 mr-5"
               >
@@ -206,32 +195,10 @@ export default function Details() {
             </div>
           </Form>
         </Formik>
-        <Modal open={open === id} onClose={handleCloseModal} center>
-          <div className="flex flex-col gap-1 pt-7">
-            <h2>Are you sure, you want to delete </h2>
-            <p>Song: {filteredSongs[0].title}</p>
-            <div className="flex gap-2 mt-2 justify-start items-center">
-              <button
-                className="bg-red-500 flex gap-2 justify-center items-center text-white px-4 py-1 rounded-md"
-                onClick={() => handleDelete(open)}
-                type="button"
-              >
-                {/* {loading ? <ButtonLoadingScreen /> : ''} */}
-                <span>delete</span>
-              </button>
-              <button
-                className="bg-mainColor text-white px-4 py-1 rounded-md"
-                onClick={handleCloseModal}
-                type="button"
-              >
-                cancel
-              </button>
-            </div>
-          </div>
-        </Modal>
       </div>
     );
   }
+  
   return (
     <section className=" py-1 flex flex-col h-screen bg-gray-50">
       <div className="w-full lg:w-8/12 px-4 mx-auto mt-6">
