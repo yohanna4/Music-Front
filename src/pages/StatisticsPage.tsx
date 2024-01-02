@@ -1,3 +1,4 @@
+import LoadingScreen from "../components/LoadingScreen";
 import { useAppSelector } from "../features/hooks";
 import { statisticsSelector } from "../features/store";
 
@@ -5,7 +6,7 @@ const StatisticsPage = () => {
   const { statistics, isLoading } = useAppSelector(statisticsSelector);
   let content;
   if (isLoading) {
-    return <h1>is loading .....</h1>;
+    return <LoadingScreen />;
   } else if (!isLoading && statistics.length > 0) {
     content = (
       <>
@@ -125,7 +126,7 @@ const StatisticsPage = () => {
         </div>
 
         <div className="grid w-full grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-y-8">
-          <div className="w-full  max-w-64 px-4 mx-auto mt-24">
+          <div className="w-full  max-w-64 px-4 mx-auto mt-10 lg:mt-24">
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white border border-secondColor">
               <div className="rounded-t mb-0 px-4 py-3 border-0">
                 <div className="flex flex-wrap items-center">
@@ -157,7 +158,7 @@ const StatisticsPage = () => {
               </div>
             </div>
           </div>
-          <div className="w-full  px-4 mx-auto mt-24">
+          <div className="w-full  px-4 mx-auto lg:mt-24">
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white border border-secondColor">
               <div className="rounded-t mb-0 px-4 py-3 border-0">
                 <div className="flex flex-wrap items-center">
@@ -194,7 +195,7 @@ const StatisticsPage = () => {
             </div>
           </div>
 
-          <div className="w-full  max-w-72 px-4 mx-auto mt-24">
+          <div className="w-full  max-w-72 px-4 mx-auto lg:mt-24">
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white border border-secondColor ">
               <div className="rounded-t mb-0 px-4 py-3 border-0">
                 <div className="flex flex-wrap items-center">
@@ -230,7 +231,6 @@ const StatisticsPage = () => {
       </>
     );
   }
-  console.log(statistics);
 
   return (
     <div className="flex flex-col md:pt-5 mx-10 lg:mx-24 justify-start">

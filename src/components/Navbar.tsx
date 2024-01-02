@@ -23,7 +23,7 @@ export const Navbar = () => {
   return (
     <div className="sticky top-0 z-30">
       <nav className="flex ">
-        <div className="md:flex md-flex-col w-full relative h-16 gap-8 text-sm items-center justify-between px-8 py-4 font-poppins font-medium text-black shadow-xl bg-white">
+        <div className="md:flex md-flex-col w-full relative h-16 text-sm items-center justify-between px-8 py-2 font-poppins font-medium text-black shadow-xl bg-white">
           <div className="flex items-center justify-center gap-4">
             <div className=" w-12 h-12">
               <img src={logo} alt="logo" className="w-24" />
@@ -33,7 +33,7 @@ export const Navbar = () => {
             </span>
           </div>
           <div
-            className={`md:flex md-flex-col relative gap-8 mt-12 md:mt-0 ${
+            className={`md:flex md-flex-col relative gap-8 mt-0 md:mt-0 ${
               showContent ? "md:bg-transparent mt-[70px] md:mt-0  md:py-0" : ""
             }`}
           >
@@ -58,7 +58,7 @@ export const Navbar = () => {
             ))}
           </div>
         </div>
-        <div className="flex md:hidden absolute text-lg text-black right-6 top-4 justify-end">
+        <div className="flex md:hidden absolute text-lg text-black right-6 top-6 justify-end">
           <button type="button" className="text-lg" onClick={handleButtonClick}>
             {!showContent ? <GiHamburgerMenu /> : <IoCloseSharp />}
           </button>

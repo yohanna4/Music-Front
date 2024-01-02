@@ -37,7 +37,7 @@ export const SongList = () => {
     const alphabetArray: string[] = Array.from(alphabetSet).sort();
 
     content = (
-      <div className="flex flex-col gap-6 md:gap-0 -mx-2 mb-10">
+      <div className="flex flex-col md:gap-0 mb-10  justify-center items-center px-5 w-full lg:mx-auto">
         {filteredSong.length === 0 ? (
           <h1 className="text-xl font-semibold text-center w-full mt-10 text-red-500">
             No Music Found
@@ -46,15 +46,15 @@ export const SongList = () => {
           alphabetArray.map((letter: string) => (
             <div
               key={letter}
-              className="flex items-center flex-col mx-5 w-full mt-6"
+              className="flex justify-center flex-col mt-6 w-full items-center"
             >
               <div
                 key={letter}
-                className="flex justify-start w-11/12 lg:w-5/6  text-orange-500 mx-2"
+                className="flex justify-start w-full lg:w-5/6  text-orange-500 "
               >
                 <h2 className="text-2xl font-semibold">{letter}</h2>
               </div>
-              <div className="w-11/12 lg:w-5/6 ">
+              <div className="w-full lg:w-5/6  ">
                 {filteredSong.map(
                   (item: Song, index: number) =>
                     item &&
@@ -86,16 +86,16 @@ export const SongList = () => {
           rounded-lg
         "
                         >
-                          <h4 className="relative z-10 font-raleway text-md text-dark w-36 text-left">
+                          <p className="relative z-10 font-raleway text-md text-darks w-36 text-left pr-5">
                             {item.title}
-                          </h4>
-                          <p className=" relative z-10 text-body-color text-md font-poppins w-36 text-left ">
+                          </p>
+                          <p className=" relative z-10 text-body-color text-md font-poppins w-36 text-left pr-5">
                             {item.artist}
                           </p>
-                          <p className=" relative z-10 text-body-color text-md font-poppins  w-48 text-left ">
+                          <p className=" relative z-10 text-body-color text-md font-poppins w-48 text-left pr-5">
                             {item.album}
                           </p>
-                          <p className=" relative z-10 text-body-color text-md font-poppins  w-24 text-left ">
+                          <p className=" relative z-10 text-body-color text-md font-poppins min-w-10 w-32 text-left break-all">
                             {item.genre}
                           </p>
                           <img
@@ -115,23 +115,23 @@ export const SongList = () => {
     );
   }
   return (
-    <div className=" relative w-5/6 items-center object-center px-4 pt-10 pb-15 mb-10  mx-10 lg:mx-24">
-        <div className="flex justify-start items-start mx-12 lg:mx-28">
+    <div className=" relative w-full items-center object-center px-4 pt-10 pb-15 mb-5 lg:mx-24">
+      <div className="flex justify-start items-start mx-10 lg:mx-28  mt-3 lg:mt-0">
         <Link
           to="/new-song"
           className=" px-10 py-2  lg:mt-0 rounded text-white bg-secondColor font-railway-500 "
         >
           Add Song
         </Link>
-        </div>
-        <h3 className="mt-10  mx-10 lg:mx-24">
-        Music is a powerful form of expression. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
-          voluptates praesentium possimus ex quisquam placeat totam officiis
-          atque facere deserunt sint, debitis, tempore assumenda dignissimos
-          error! Earum veniam error asperiores.
-        </h3>
+      </div>
+      <h3 className="mt-10 mx-5 lg:mx-24">
+        Music is a powerful form of expression. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Molestias voluptates praesentium possimus
+        ex quisquam placeat totam officiis atque facere deserunt sint, debitis,
+        tempore assumenda dignissimos error! Earum veniam error asperiores.
+      </h3>
       <div>
-        <div className="absolute top-6 right-1">
+        <div className="absolute top-0 lg:top-6 right-1 ">
           <div className="relative w-max  mx-10 lg:mx-24">
             <input
               type="text"
